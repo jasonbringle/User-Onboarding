@@ -53,10 +53,18 @@ function FormComp({ touched, errors, status }) {
                 )}
                 </label>
                 <label className="checkbox-container">
-                Terms Of Service
-                <Field type="checkbox" name="TOS" />
-                <span className="checkmark" />
-                {touched.TOS && errors.TOS && <p className="errors">{errors.TOS}</p>}
+                    Terms Of Service
+                    <Field type="checkbox" name="TOS" />
+                    <span className="checkmark" />
+                    {touched.TOS && errors.TOS && <p className="errors">{errors.TOS}</p>}
+                </label>
+                <label className="role">Your Role
+                    <Field component="select" className="role-select" name="Role">
+                        <option>Choose an Option</option>
+                        <option value="Web Developer">Web Developer</option>
+                        <option value="iOS Developer">iOS Developer</option>
+                        <option value="Data Scientist">Data Scientist</option>
+                    </Field>
                 </label>
             </div>
         <div className="button-styles">  
@@ -75,7 +83,8 @@ export default withFormik({
     Name: "",
     Email: "",
     Password: "",
-    TOS: false
+    TOS: false,
+    Role:""
   }),
 
   validationSchema: yup.object().shape({

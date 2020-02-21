@@ -9,6 +9,8 @@ function User(props) {
           <ul key={props.user.id}>
             <li>Name: {props.user.Name}</li>
             <li>Email: {props.user.Email}</li>
+            <li>Role: {props.user.Role}</li>
+
           </ul>
         )}
       </div>
