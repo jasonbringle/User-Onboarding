@@ -1,0 +1,15 @@
+.onpage-card{
+    display: flex;
+    justify-content: center;
+    width: 100%;   
+
+}
+.saved-user-card{
+    display:flex;
+    text-align: left;
+    align-self:center; 
+    width: 100%;
+    border: 2px solid rgba(36, 36, 128, 0.801)
+  }
+
+  

@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 33px;
+  height: 50vh;
+  text-align: left;
+  font-size: calc(10px + 2vmin);
+  border: 5px solid rgba(36,36,128,0.801);
+  margin: 1rem;
+
+}
+
+.errors{
+  background-color: red;
+}
+
+.button-styles{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+/* .submit-button{
+  text-decoration: none;
+  width: 100px;
+  background-color: cadetblue;
+}
+a:hover{
+  background-color: darkcyan;
+} */
+
