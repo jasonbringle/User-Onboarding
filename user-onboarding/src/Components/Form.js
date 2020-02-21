@@ -15,6 +15,7 @@ const Button = styled.button`
     background-color: darkcyan;
   }
 `;
+
 function FormComp({ touched, errors, status }) {
   const [user, setUser] = useState({});
 
@@ -22,41 +23,49 @@ function FormComp({ touched, errors, status }) {
     status && setUser(status);
   }, [status]);
 
+  function alertMessage(message){
+    return alert(message)
+    }
+    
   return (
     <div className="onboard-form">
       <Form className="form">
-        <label>
-          Name:
-          <Field type="text" name="Name" placeholder="Name" />
-          {touched.Name && errors.Name && (
-            <p className="errors">{errors.Name}</p>
-          )}
-        </label>
-        <label>
-          Email:
-          <Field type="email" name="Email" placeholder="email address" />
-          {touched.Email && errors.Email && (
-            <p className="errors">{errors.Email}</p>
-          )}
-        </label>
-        <label>
-          Password:
-          <Field type="password" name="Password" placeholder="password"></Field>
-          {touched.Password && errors.Password && (
-            <p className="errors">{errors.Password}</p>
-          )}
-        </label>
-        <label className="checkbox-container">
-          Terms Of Service
-          <Field type="checkbox" name="TOS" />
-          <span className="checkmark" />
-          {touched.TOS && errors.TOS && <p className="errors">{errors.TOS}</p>}
-        </label>
-        <div className="button-styles">
-          <Button>Submit!</Button>
+          <div className='inputs'>
+                <label className='label'>
+                Name:
+                <Field className='field' type="text" name="Name" placeholder="Name" />
+                {touched.Name && errors.Name && (
+                    <p className="errors">{errors.Name}</p>
+                )}
+                </label>
+                <label className='label'>
+                Email:
+                <Field className='field' type="email" name="Email" placeholder="email address" />
+                {touched.Email && errors.Email && (
+                    <p className="errors">{errors.Email}</p>
+                )}
+                </label >
+                <label className='label'>
+                Password:
+                <Field className='field' type="password" name="Password" placeholder="password"></Field>
+                {touched.Password && errors.Password && (
+                    <p className="errors">{errors.Password}</p>
+                )}
+                </label>
+                <label className="checkbox-container">
+                Terms Of Service
+                <Field type="checkbox" name="TOS" />
+                <span className="checkmark" />
+                {touched.TOS && errors.TOS && <p className="errors">{errors.TOS}</p>}
+                </label>
+            </div>
+        <div className="button-styles">  
+        <Button>Submit!</Button>
         </div>
         <User user={user} />
       </Form>
+      
+      
     </div>
   );
 }
@@ -70,16 +79,22 @@ export default withFormik({
   }),
 
   validationSchema: yup.object().shape({
-    Name: yup.string().required("This is the name field and it is required!"),
+    Name: yup
+        .string()
+        .required("This is the name field and it is required!"),
 
     Email: yup
-      .string()
-      .email()
-      .required("You need to put an email you dolt!!!"),
+        .string()
+        .email()
+        .required("You need to put an email you dolt!!!"),
 
-    Password: yup.string().required("You must enter a password, chief"),
+    Password: yup
+        .string()
+        .required("You must enter a password, chief"),
 
-    TOS: yup.bool().oneOf([true], "You gotta read the TOS, sir")
+    TOS: yup
+        .bool()
+        .oneOf([true], "You gotta read the TOS, sir")
   }),
   handleSubmit: (values, { resetForm, setStatus }) => {
     // console.log("Submitting!", values)
